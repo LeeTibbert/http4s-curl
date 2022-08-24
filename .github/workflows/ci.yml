@@ -76,12 +76,10 @@ jobs:
 
       - name: Install libcurl
         if: matrix.os == 'macos-latest'
-        run: brew install --force curl
-
-      - name: Probe libcurl
         run: |
-          ls -1 /opt/homebrew/opt/curl/lib
-          ls -1 /opt/homebrew/opt/curl/lib
+          brew list curl
+          brew install --force curl
+          brew list curl
 
       - name: Check that workflows are up to date
         run: sbt '++${{ matrix.scala }}' 'project /' githubWorkflowCheck
