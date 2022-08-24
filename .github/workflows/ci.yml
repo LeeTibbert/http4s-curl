@@ -15,14 +15,14 @@ on:
     tags: [v*]
 
 env:
-  LDFLAGS: '-L/opt/homebrew/opt/curl/lib'
+  LDFLAGS: '-L/usr/local/Cellar/curl/7.84.0/lib'
   PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
   SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
   SONATYPE_CREDENTIAL_HOST: ${{ secrets.SONATYPE_CREDENTIAL_HOST }}
   SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
   PGP_SECRET: ${{ secrets.PGP_SECRET }}
-  CPPFLAGS: '-I/opt/homebrew/opt/curl/include'
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  CPPFLAGS: '-I/usr/local/Cellar/curl/7.84.0/include'
+GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest]
+        os: [macos-latest, macos-12]
         scala: [3.1.3]
         java: [temurin@17]
     runs-on: ${{ matrix.os }}
