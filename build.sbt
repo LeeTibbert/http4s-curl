@@ -10,6 +10,14 @@ ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17"))
 ThisBuild / githubWorkflowOSes += "macos-latest"
 ThisBuild / tlJdkRelease := Some(8)
 
+// 2022-08-23 LeeT DEBUG -- Should be macOS only.
+ThisBuild / nativeConfig ~= { c =>
+     c.withLinkingOptions(c.linkingOptions ++ Seq(
+                            "-L/usr/local/Cellar/curl/7.84.0/lib",
+                            "-lcurl"))
+    }
+
+
 ThisBuild / githubWorkflowEnv ++=
   Map(
     "CPPFLAGS" -> "-I/opt/homebrew/opt/curl/include",
