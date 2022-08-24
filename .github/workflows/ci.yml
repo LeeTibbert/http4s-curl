@@ -77,7 +77,7 @@ jobs:
       - name: Link libcurl - macOS
         if: matrix.os == 'macos-latest'
         run: |
-           curl-config
+           curl-config --libs
            ls -l /usr/lib/*.dylib
 
       - name: Check headers and formatting
