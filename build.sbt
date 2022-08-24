@@ -22,8 +22,9 @@ ThisBuild / githubWorkflowBuildPreamble ++= Seq(
     cond = Some("matrix.os == 'ubuntu-latest'"),
   ),
   WorkflowStep.Run(
-    List("brew list curl", "brew install --force curl", "brew list curl"),
-    name = Some("Install libcurl - macOS"),
+//    List("brew list curl", "brew install --force curl", "brew list curl"),
+    List("brew link curl"),
+    name = Some("Link libcurl - macOS"),
     cond = Some("matrix.os == 'macos-latest'"),
   ),
 )
