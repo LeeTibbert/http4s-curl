@@ -12,8 +12,8 @@ ThisBuild / tlJdkRelease := Some(8)
 
 ThisBuild / githubWorkflowEnv ++=
   Map(
-    "CPPFLAGS" -> "-I/usr/local/opt/curl/include",
-    "LDFLAGS" -> "-L/usr/local/opt/curl/lib",
+    "CPPFLAGS" -> "-I/opt/homebrew/opt/curl/include",
+    "LDFLAGS" -> "-L/opt/homebrew/opt/curl/lib",
   )
 ThisBuild / githubWorkflowBuildPreamble ++= Seq(
   WorkflowStep.Run(
@@ -22,7 +22,8 @@ ThisBuild / githubWorkflowBuildPreamble ++= Seq(
     cond = Some("matrix.os == 'ubuntu-latest'"),
   ),
   WorkflowStep.Run(
-    List("brew install curl"),
+    List("ls -1 /opt/homebrew/opt/curl/lib",
+         "ls -1 /opt/homebrew/opt/curl/include"),
     name = Some("Install libcurl"),
     cond = Some("matrix.os == 'macos-latest'"),
   ),
