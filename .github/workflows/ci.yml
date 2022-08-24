@@ -76,7 +76,9 @@ jobs:
 
       - name: Link libcurl - macOS
         if: matrix.os == 'macos-latest'
-        run: brew link curl
+        run:
+          brew install --force curl
+          brew link curl
 
       - name: Check headers and formatting
         if: matrix.java == 'temurin@17'
