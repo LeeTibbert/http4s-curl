@@ -76,7 +76,7 @@ jobs:
 
       - name: Link libcurl - macOS
         if: matrix.os == 'macos-latest'
-        run:
+        run: |
           brew install --force curl
           brew link curl
 
