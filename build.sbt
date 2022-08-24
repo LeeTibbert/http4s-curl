@@ -19,6 +19,19 @@ ThisBuild / nativeConfig ~= { c =>
 }
 */
 
+
+ThisBuild / nativeConfig ~= { c => {
+    val osName = System.getProperty("os.name")
+    val isMacOs = osName.toLowerCase().startsWith("mac os x")
+    if (!isMacOs) {
+      c // do not change
+    } else {
+         c.withLinkingOptions(c.linkingOptions ++ Seq(
+                            "-L/usr/local/Cellar/curl/7.84.0/lib"))
+     }
+}
+}
+
 ThisBuild / githubWorkflowEnv ++=
   Map(
     "CPPFLAGS" -> "-I/opt/homebrew/opt/curl/include",

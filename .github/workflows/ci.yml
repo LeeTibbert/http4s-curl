@@ -15,7 +15,6 @@ on:
     tags: [v*]
 
 env:
-  LD_LIBRARY_PATH: '-L/usr/local/Cellar/curl/7.84.0/lib'
   PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
   SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
   SONATYPE_CREDENTIAL_HOST: ${{ secrets.SONATYPE_CREDENTIAL_HOST }}
