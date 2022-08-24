@@ -22,9 +22,9 @@ ThisBuild / githubWorkflowBuildPreamble ++= Seq(
     cond = Some("matrix.os == 'ubuntu-latest'"),
   ),
   WorkflowStep.Run(
-    List("ls -1 /opt/homebrew/opt/curl/lib",
-         "ls -1 /opt/homebrew/opt/curl/include"),
-    name = Some("Probe dylib"),
+    List("brew list curl", "brew install --force curl", "brew list curl"),
+    name = Some("Install libcurl - macOS"),
+    cond = Some("matrix.os == 'macos-latest'"),
   ),
 )
 ThisBuild / githubWorkflowBuildPostamble ~= {
