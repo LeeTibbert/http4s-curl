@@ -74,6 +74,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install libcurl4-openssl-dev
 
+      - name: Install libcurl
+        if: matrix.os == 'macos-latest'
+        run: brew install --force curl
+
       - name: Probe libcurl
         run: |
           ls -1 /opt/homebrew/opt/curl/lib
